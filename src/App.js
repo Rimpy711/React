@@ -13,18 +13,19 @@ class App extends Component {
     patient: {},
     currentDoctorId: 0,
     currentAilment: "",
-    patients:{},
-    intakeform:{},
+    patients: {},
+    intakeform: {},
   };
 
+
   componentDidMount() {
-    
+
     axios.get("https://localhost:5001/Doctors").then((responce) => {
       this.setState({ doctors: responce.data });
       this.setState({ currentDoctorId: this.state.doctors[0].id });
     });
   }
-  
+
   handleCurrentDoctor = (event) => {
     console.log(event.target.value);
     this.setState({ currentDoctorId: event.target.value });
@@ -64,7 +65,7 @@ class App extends Component {
       <React.Fragment>
         <NavBar>Doctor's office</NavBar>
         <main className="container">
-           <p>
+          <p>
             Current Doctor ID: &nbsp;
             {this.state.currentDoctorId} <br />
             Current Patient ID: &nbsp;
@@ -92,7 +93,7 @@ class App extends Component {
             ></textarea>
           </div>
           <button
-          type="button"
+            type="button"
             className="btn btn-success m-2"
             disabled={
               this.state.currentDoctorId === undefined ||
